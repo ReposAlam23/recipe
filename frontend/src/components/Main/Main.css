@@ -1,0 +1,25 @@
+.main{
+    background-color: azure;
+    height: 100vh;
+}
+.logo{
+    height: 3rem;
+    width: 3rem;
+    margin: 1rem;
+    margin-right: 3rem;
+}
+.header{
+    display: flex;
+}
+.search-new-btn{
+    border: 1px solid black;
+    height: 20vh;
+    margin-left: 20vw;
+    margin-right: 20vw;   
+}
+.search-bar{
+    margin: 2rem 20vw
+}
+.new-btn{
+    margin: 2rem 25vw
+}

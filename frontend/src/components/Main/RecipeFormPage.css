@@ -1,0 +1,23 @@
+.recipe-page{
+    background-color: black;
+    color: white;
+    height: 100vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+
+}
+.recipe-form{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    color: gray
+}
+input{
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    /* padding: 1rem; */
+    width: 97%;
+}
