@@ -1,29 +1,26 @@
 const express = require("express")
 const route = express()
-const userDB = require("../model/userSchema")
 route.use(express.json())
-const recipeDB = require("./../model/recipeSchema")
-const path = require("path")
+const recipeDB = require("../model/recipeSchema")
 
-route.post("/addRecipe", async(req, res)=>{
+route.post("/addRecipe/", async(req, res)=>{
     try{
-        const { title, author, ingredients, direction} = req.body
+        const { title, author, ingredients, direction, userid} = req.body
         const {image} = req.files
         console.log(req.body);
-        image.mv("./imageFolder" + image.name, (err)=>{
+        image.mv( "./Uploads/" + image.name, async(err)=>{
             if(err){
                 res.json(err)
             }else{
-                const postRecieve = new this.post({
-                    ...{title, author, ingredients, direction},
+                const postRecieve = await recipeDB.create({
+                    ...{title, author, ingredients, direction, userid},   
                     image: image.name
                 })
-            }
-            try{
-                const response = postRecieve.save()
-                res.json(response)
-            }catch(e){
-                res.json({message: e.message})
+                try{const response = postRecieve
+                    res.json(response)
+                } catch(e){
+                    res.json({message: e.message})    
+                }
             }
         })
 

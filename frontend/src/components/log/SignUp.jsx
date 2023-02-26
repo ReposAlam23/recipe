@@ -21,6 +21,7 @@ const SignUp =()=>{
                 console.log(result.data.status)
                 setErrorMssg({...errorMssg, status: result.data.status, message: result.data.message, })
             } else{
+                console.log(result);
                 setForm({name: "", email: "", password: "", confirmpassword: ""})
                 navigate("/")
             }

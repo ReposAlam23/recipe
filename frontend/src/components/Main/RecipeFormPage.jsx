@@ -1,28 +1,32 @@
 import React, { useState } from "react";
 import "./RecipeFormPage.css"
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const RecipeForm =()=>{
     const navigate = useNavigate()
-    // const [recipeForm, setRecipeForm] = useState({ title: "", author: "", image: "", ingredients: "", direction: ""})
+    
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
     const [image, setImage] = useState("")
     const [ingredients, setIngredients] = useState("")
     const [direction, setDirection] = useState("")
+
+    const userID = JSON.parse(localStorage.getItem('userdetails'))._id
+    const token = JSON.parse(localStorage.getItem("token"))
+    // console.log(userID, token);
+
     const submitHandler= async(e)=>{
         e.preventDefault()
-        // console.log(recipeForm);
-
+        
         const formdata = new FormData()
         formdata.append("title", title)
         formdata.append("author", author)
         formdata.append("image", image)
         formdata.append("ingredients", ingredients)
         formdata.append("direction", direction)
-
-        await fetch("http://localhost:4001/addRecipe", {
+        formdata.append("userid", userID)
+        
+        await fetch(`http://localhost:4001/addRecipe/`, {
             method: "POST",
             body: formdata
         })
@@ -43,6 +47,7 @@ const RecipeForm =()=>{
                         <input 
                             type="text" 
                             id="title"
+                            required
                             name="title"
                             value={title} 
                             onChange={(e)=>setTitle(e.target.value)}
@@ -55,6 +60,7 @@ const RecipeForm =()=>{
                         <input 
                             type="text" 
                             id="author"
+                            required
                             name="author"
                             value={author} 
                             onChange={(e)=> setAuthor(e.target.value)} 
@@ -67,32 +73,34 @@ const RecipeForm =()=>{
                         <input 
                             type="file" 
                             id="image"
-                            name="image"
-                            value={image} 
-                            onChange={(e)=>setImage(e.target.value)}
+                            required
+                            name="image"        
+                            onChange={(e)=>setImage(e.target.files[0])}
                         />
                     </div>
                     <div>
                         <div>
                             <label htmlFor="ingredients">Ingredients</label>
                         </div>
-                        <input 
+                        <textarea 
                             type="text" 
+                            required
                             id="ingredients"
                             name="ingredients"
                             value={ingredients} 
-                            onChange={(e)=>setIngredients(e.target.value)}                        />
+                            onChange={(e)=>setIngredients(e.target.value)} />
                     </div>
                     <div>
                         <div>
                             <label htmlFor="direction">Direction</label>
                         </div>
-                        <input 
+                        <textarea 
                             type="text" 
                             id="direction"
+                            required
                             name="direction"
                             value={direction} 
-                            onChange={(e)=>setDirection(e.target.value)}                        />
+                            onChange={(e)=>setDirection(e.target.value)}  />
                     </div>
                     <button type="submit">Add recipe</button>
 

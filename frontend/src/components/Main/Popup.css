@@ -1,0 +1,35 @@
+.popup{
+    position: fixed;
+    top: 30%;
+    left: 5%;
+    right: 2%;
+    bottom: 5%;
+    background-color: azure;
+    box-shadow: 1px 1px 500px rgb(0, 0, 0);
+}
+.popup-inner{
+    position : relative;
+    width: 100%;
+}
+.popup-inner .close-btn{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+/* THESE CLASSES ARE INSIDE MAIN JSX */
+.main-pop-div{
+    display: flex;
+    justify-content: space-between;
+}
+.pop-image-div{
+    width: 45vw;
+    margin-right: 2vw;
+    margin-left: 2vw;
+    height: 45vh;
+}
+.pop-button-div{
+    width: 45vw;
+    margin-top: 10vh;
+    margin-right: 2vw;
+}

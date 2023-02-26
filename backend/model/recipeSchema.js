@@ -5,7 +5,8 @@ const recipeSchema = new mongoose.Schema({
     author: {type: String},
     image: {type: String},
     ingredients: {type: String},
-    direction: {type: String}
+    direction: {type: String},
+    userid: {type: String}
 })
 
 const recipe = mongoose.model("recipes", recipeSchema)

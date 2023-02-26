@@ -8,11 +8,12 @@ const signinRoute = require("./routes/signin")
 const addRecipeRoute = require("./routes/addRecipe")
 const allRecipe = require("./routes/getAllRecipe")
 const cors = require("cors")
-// const usr = require("./model/userSchema")
+const fileupload = require("express-fileupload")
 
 
 
 app.use(cors())
+app.use(fileupload())
 app.use("/", signupRoute)
 app.use("/", signinRoute)
 app.use("/", addRecipeRoute)
